@@ -1,4 +1,4 @@
-// Description: In this Arduino we are toggling LED :
+// Description: In this Arduino project we are toggling a LED :
 
 int data1 = 0;
 int data2 = 0;
