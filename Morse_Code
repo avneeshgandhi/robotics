@@ -1,4 +1,4 @@
-Description: In the Arduino project I made a Morse Code LED project. 
+//Description: In the Arduino project I made a Morse Code LED project. 
 const int ledPin = 13;
 const int dotDuration = 200;
 const int dashDuration = dotDuration * 10;
