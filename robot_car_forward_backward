@@ -1,0 +1,41 @@
+Description: In this Arduino project, we made a robot 2wd car chassis which can go forward or backward.
+
+const int motorPin1 = 5;
+const int motorPin2 = 6;
+const int motorPin3 = 10;
+const int motorPin4 = 11;
+  
+void setup() {
+ pinMode(motorPin1, OUTPUT);
+ pinMode(motorPin2, OUTPUT);
+ pinMode(motorPin3, OUTPUT);
+ pinMode(motorPin4, OUTPUT);
+}
+ 
+void loop() {  
+ forward();        
+ delay(8000);
+ backward();
+ delay(8000);
+}
+ 
+void forward()  {
+ digitalWrite(motorPin1, HIGH);
+ digitalWrite(motorPin2, LOW);
+ digitalWrite(motorPin3, HIGH);
+ digitalWrite(motorPin4, LOW);
+}
+
+void backward()  {
+ digitalWrite(motorPin1, LOW);  
+ digitalWrite(motorPin2, HIGH);
+ digitalWrite(motorPin3, LOW);
+ digitalWrite(motorPin4, HIGH);
+}
+ 
+void stop()  {
+ digitalWrite(motorPin1, LOW);  
+ digitalWrite(motorPin2, LOW);
+ digitalWrite(motorPin3, LOW);
+ digitalWrite(motorPin4, LOW);
+}
