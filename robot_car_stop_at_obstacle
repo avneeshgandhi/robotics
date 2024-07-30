@@ -1,0 +1,42 @@
+Description: In this project a robot car goes forward. When it sees a obstacle, the robot stops. Code:
+const int motorPin1 = 5;
+const int motorPin2 = 6;
+const int motorPin3 = 10;
+const int motorPin4 = 11;
+const int sensorPin = A0;
+int sensorValue = 0;
+
+void setup() {
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT); 
+  pinMode(motorPin3, OUTPUT);
+  pinMode(motorPin4, OUTPUT);
+  pinMode(sensorPin, INPUT);
+}
+
+void loop() {
+  sensorValue = digitalRead(sensorPin);
+   if (sensorValue == 1) {
+     forward();
+   }
+   
+   else {
+     stop();
+   }
+}
+
+void forward() {
+  //LEFT WHEEL
+  digitalWrite(motorPin1, LOW);
+  digitalWrite(motorPin2, HIGH);
+  //RIGHT WHEEL
+  digitalWrite(motorPin3, HIGH);
+  digitalWrite(motorPin4, LOW);
+} 
+
+void stop()  {
+  digitalWrite(motorPin1, LOW);
+  digitalWrite(motorPin2, LOW);
+  digitalWrite(motorPin3, LOW);
+  digitalWrite(motorPin4, LOW);
+}
