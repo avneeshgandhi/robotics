@@ -1,0 +1,1 @@
+//Description: In this project a robot car is going forward. When it sees an obstacle, the robot goes backward for 2 seconds, stops for 1 second, and turns right. It goes forward again.   
