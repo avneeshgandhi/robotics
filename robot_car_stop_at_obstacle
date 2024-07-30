@@ -1,4 +1,4 @@
-Description: In this project a robot car goes forward. When it sees a obstacle, the robot stops. Code:
+//Description: In this project a robot car goes forward. When it sees a obstacle, the robot stops. 
 const int motorPin1 = 5;
 const int motorPin2 = 6;
 const int motorPin3 = 10;
