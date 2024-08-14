@@ -1,0 +1,63 @@
+Description: In this project, I programmed a robot car to go forward on a table. If the table ends, the robot should avoid it.
+
+const int motor1Pin1 = 5;
+const int motor1Pin2 = 6;
+const int motor2Pin1 = 10;
+const int motor2Pin2 = 11;
+const int sensorPin = A0;
+int sensorValue = 1;
+
+void setup() {
+  pinMode(motor1Pin1, OUTPUT);
+  pinMode(motor1Pin2, OUTPUT);
+  pinMode(motor2Pin1, OUTPUT);
+  pinMode(motor2Pin2, OUTPUT);
+  pinMode(sensorPin, INPUT);
+}
+
+void loop() {
+  sensorValue = digitalRead(sensorPin);
+  if (sensorValue == 0) {
+    forward();
+  }
+
+  else {
+    stop();
+    delay(500);
+    backward();
+    delay(500);
+    stop();
+    delay(500);
+    turn180();
+    delay(500);
+    forward();
+  }
+}
+
+void stop() {
+  digitalWrite(motor1Pin1, LOW);
+  digitalWrite(motor1Pin2, LOW);
+  digitalWrite(motor2Pin1, LOW);
+  digitalWrite(motor2Pin2, LOW);
+}
+
+void forward() {
+  digitalWrite(motor1Pin1, LOW);
+  digitalWrite(motor1Pin2, HIGH);
+  digitalWrite(motor2Pin1, HIGH);
+  digitalWrite(motor2Pin2, LOW);
+}
+
+void backward() {
+  digitalWrite(motor1Pin1, HIGH);
+  digitalWrite(motor1Pin2, LOW);
+  digitalWrite(motor2Pin1, LOW);
+  digitalWrite(motor2Pin2, HIGH);
+}
+
+void turn180() {
+  digitalWrite(motor1Pin1, HIGH);
+  digitalWrite(motor1Pin2, LOW);
+  digitalWrite(motor2Pin1, HIGH);
+  digitalWrite(motor2Pin2, LOW);
+}
