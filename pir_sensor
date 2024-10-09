@@ -1,0 +1,21 @@
+// Description: In this project, I used a PIR Sensor to sense the heat from living things. If the PIR senses anything, a LED will turn on. Else, the LED won't turn on.
+const int ledPin = 3;        // Pin LED is connected to
+const int pirSensorPin = 5;  // PIN PIR Sensor is connected to
+int motionDetected = LOW;    // Start MotionDetected as low (No motion detected)
+
+void setup() {
+  pinMode(ledPin, OUTPUT);       // declare LED as output
+  pinMode(pirSensorPin, INPUT);  // declare the PIR sensor as input
+  Serial.begin(9600);            //Set serial out if we want debugging
+  delay(5000);                   //Allow time for the PIR Sensor to callib
+}
+
+void loop() {
+  motionDetected = digitalRead(pirSensorPin);  // Read the PIR sensor
+  if (motionDetected == HIGH)                  //If motion detected
+  {
+    digitalWrite(ledPin, HIGH);
+    delay(100);
+    digitalWrite(ledPin, LOW);
+  }
+}
