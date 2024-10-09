@@ -1,0 +1,33 @@
+// Description: I used a IR remote + reciever for this sensor project. Project: There are many buttons on the IR Remote. For this project, we chose minus
+// and plus. We got the values of the buttons on the Serial Monitor. They were 7 and 21. We used them to control the brightness of the LED.  
+#include <IRremote.h>
+
+const int led = 5;
+int data = 0;
+int control = 0;
+
+void setup() {
+  Serial.begin(9600);
+  IrReceiver.begin(9);
+}
+
+void loop() {
+  if (IrReceiver.decode()) {
+    data = IrReceiver.decodedIRData.command;
+    Serial.println(data);
+  }
+
+  if (data == 7) {
+    control = constrain(control, 0, 255);
+    control = control - 5;
+    analogWrite(led, control);
+  }
+
+  else if (data == 21) {
+    control = constrain(control, 0, 255);
+    control = control + 5;
+    analogWrite(control, 255);
+  }
+
+  IrReceiver.resume();
+} 
