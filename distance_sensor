@@ -1,0 +1,19 @@
+// Description: This is an ultrasonic sensor project which will calculate the distance using ultrasonic waves. Formula: distance = duration / 2 
+float distance = 0;
+unsigned long duration = 0;
+
+void setup() {
+  pinMode(3, OUTPUT);
+  pinMode(2, INPUT);
+}
+
+void loop() {
+  digitalWrite(3, LOW);
+  delayMicroseconds(2);
+  digitalWrite(3, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(3, LOW);
+  duration = pulseIn(2, HIGH);
+  distance = 34460.0 * duration / 2000000.0;
+  delay(50);
+}
