@@ -1,0 +1,99 @@
+//Description: In this robot car project, I programmed a robot car to avoid obstacles using three IR Sensors so it is more effecient. It also equips a buzzer.
+const int motor1Pin1 = 5;
+const int motor1Pin2 = 6;
+const int motor2Pin1 = 10;
+const int motor2Pin2 = 11;
+const int buzzer = 12;
+const int ls = A0;
+const int ms = A1;
+const int rs = A2;
+int sensorValueLs = 0;
+int sensorValueMs = 0;
+int sensorValueRs = 0;
+
+void setup() {
+  pinMode(motor1Pin1, OUTPUT);
+  pinMode(motor1Pin2, OUTPUT);
+  pinMode(motor2Pin1, OUTPUT);
+  pinMode(motor2Pin2, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(ls, INPUT);
+  pinMode(ms, INPUT);
+  pinMode(rs, INPUT);
+}
+
+void loop() {
+  sensorValueLs = digitalRead(ls);
+  sensorValueMs = digitalRead(ms);
+  sensorValueRs = digitalRead(rs);
+  // Condition 1:
+  if (sensorValueLs == 0 && sensorValueMs == 0 && sensorValueRs == 0) {
+    avoid();
+  }
+  // Condition 2:
+  else if (sensorValueLs == 0 && sensorValueMs == 0 && sensorValueRs == 1) {
+    avoid();
+  }
+  // Condition 3:
+  else if (sensorValueLs == 0 && sensorValueMs == 1 && sensorValueRs == 0) {
+    avoid();
+  }
+  // Condition 4:
+  else if (sensorValueLs == 0 && sensorValueMs == 1 && sensorValueRs == 1) {
+    avoid();
+  }
+  // Condition 5:
+  else if (sensorValueLs == 1 && sensorValueMs == 0 && sensorValueRs == 0) {
+    avoid();
+  }
+  // Condition 6:
+  else if (sensorValueLs == 1 && sensorValueMs == 0 && sensorValueRs == 1) {
+    avoid();
+  }
+  // Condition 7:
+  else if (sensorValueLs == 1 && sensorValueMs == 1 && sensorValueRs == 0) {
+    avoid();
+  }
+  // Condition 8:
+  else {
+    forward();
+  }
+}
+
+void stop() {
+  digitalWrite(motor1Pin1, LOW);
+  digitalWrite(motor1Pin2, LOW);
+  digitalWrite(motor2Pin1, LOW);
+  digitalWrite(motor2Pin2, LOW);
+}
+
+void forward() {
+  digitalWrite(motor1Pin1, LOW);
+  digitalWrite(motor1Pin2, HIGH);
+  digitalWrite(motor2Pin1, HIGH);
+  digitalWrite(motor2Pin2, LOW);
+}
+
+void backward() {
+  digitalWrite(motor1Pin1, HIGH);
+  digitalWrite(motor1Pin2, LOW);
+  digitalWrite(motor2Pin1, LOW);
+  digitalWrite(motor2Pin2, HIGH);
+}
+
+void right() {
+  digitalWrite(motor1Pin1, LOW);
+  digitalWrite(motor1Pin2, HIGH);
+  digitalWrite(motor2Pin1, HIGH);
+  digitalWrite(motor2Pin2, HIGH);
+}
+
+void avoid() {
+  backward();
+  digitalWrite(buzzer, HIGH);
+  delay(100);
+  digitalWrite(buzzer, LOW);
+  delay(400);
+  right();
+  delay(500);
+}
