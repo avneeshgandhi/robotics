@@ -1,0 +1,10 @@
+// Description: In this C++ program, I printed "Hello World!"
+
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    std::cout << "Hello World!";
+    return 0;
+}
